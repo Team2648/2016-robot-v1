@@ -3,6 +3,7 @@ package org.usfirst.frc.team2648.robot.subsystems;
 import org.usfirst.frc.team2648.robot.Robot;
 import org.usfirst.frc.team2648.robot.RobotMap;
 import org.usfirst.frc.team2648.robot.commands.ArcadeDrive;
+import org.usfirst.frc.team2648.robot.OI;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
@@ -51,8 +52,13 @@ public class DriveTrain extends PIDSubsystem {
     
     public void arcadeDrive(){
     	if(!this.getPIDController().isEnabled()){
+    		/*if(!Robot.oi.j2.getRawButton(5)){
     		//rd.arcadeDrive(-Robot.oi.j1.getRawAxis(1),Robot.oi.j1.getRawAxis(0));
-    		rd.tankDrive(Robot.oi.j1.getRawAxis(3), Robot.oi.j1.getRawAxis(1));
+    			rd.tankDrive( -Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(3));
+    		}
+    		else{*/
+    			rd.tankDrive(-Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(3));
+    		
     	}
     } 
     

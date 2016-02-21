@@ -50,8 +50,8 @@ public class RobotMap {
 	public static DoubleSolenoid intake2;
 	
 	//Shooter
-	public static SpeedController shooter;
-	public static SpeedController shooter2;
+	public static SpeedController shooterLeft;
+	public static SpeedController shooterRight;
 	public static DigitalInput ball;
 	
 	//Hanger
@@ -88,8 +88,8 @@ public class RobotMap {
 		intake2 = new DoubleSolenoid(2,3);
 		
 		//Shooter
-		shooter = new Talon(3);
-		shooter2 = new Talon(4);
+		shooterRight = new Talon(3);
+		shooterLeft = new Talon(4);
 		ball = new DigitalInput(0);
 		
 		//Hanger

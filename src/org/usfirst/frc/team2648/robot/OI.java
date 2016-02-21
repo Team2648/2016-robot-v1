@@ -3,6 +3,7 @@ package org.usfirst.frc.team2648.robot;
 import org.usfirst.frc.team2648.robot.commands.Hang;
 import org.usfirst.frc.team2648.robot.commands.HangerDeploy;
 import org.usfirst.frc.team2648.robot.commands.HangerLift;
+import org.usfirst.frc.team2648.robot.commands.InShoot;
 import org.usfirst.frc.team2648.robot.commands.IntakeDown;
 import org.usfirst.frc.team2648.robot.commands.IntakeRun;
 import org.usfirst.frc.team2648.robot.commands.IntakeUp;
@@ -53,6 +54,7 @@ public class OI {
 	
 	public JoystickButton shooterOut;
 	public JoystickButton shooterIn;
+	public JoystickButton inShoot;
 	
 	/*public JoystickButton hangDeploy;
 	public JoystickButton hangUp;
@@ -64,12 +66,12 @@ public class OI {
 		
 		intakeIn = new JoystickButton(j2,5);
 		intakeOut = new JoystickButton(j2,6);
-		intakeUp = new JoystickButton(j2,4);
-		intakeDown = new JoystickButton(j2,1);
+		intakeUp = new JoystickButton(j2,3);
+		intakeDown = new JoystickButton(j2,2);
 		
-		shooterOut = new JoystickButton(j2,8);
-		shooterIn = new JoystickButton(j2,7);
-		
+		shooterOut = new JoystickButton(j2,2);
+		shooterIn = new JoystickButton(j2,3);
+		inShoot = new JoystickButton(j2,1);
 		/*hangDeploy = new JoystickButton(j2,6);
 		hangUp = new JoystickButton(j2,7);
 		hang = new JoystickButton(j2,8);*/
@@ -82,7 +84,7 @@ public class OI {
 		
 		shooterOut.whileHeld(new Shoot(1));
 		shooterIn.whileHeld(new Shoot(-1));
-		
+		inShoot.whenPressed(new InShoot(.75,1));
 		/*hangDeploy.whenPressed(new HangerDeploy());
 		hangUp.whenPressed(new HangerLift(1));
 		hang.whenPressed(new Hang());*/
@@ -96,6 +98,10 @@ public class OI {
 	public Joystick getj2(){
 		return j2;
 	}
+
+	/*public static void main(String[] args) {
+		Robot.oi.j1.getRawAxis(3)
+	}*/
 	
 }
 

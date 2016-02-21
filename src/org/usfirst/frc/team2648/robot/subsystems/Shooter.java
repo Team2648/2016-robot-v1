@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Shooter extends Subsystem {
-    SpeedController shooter = RobotMap.shooter;
-    SpeedController shooter2 = RobotMap.shooter2;
+    SpeedController shooter = RobotMap.shooterLeft;
+    SpeedController shooter2 = RobotMap.shooterRight;
     DigitalInput ball = RobotMap.ball;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

@@ -1,36 +1,33 @@
 package org.usfirst.frc.team2648.robot.commands;
 
 import org.usfirst.frc.team2648.robot.Robot;
-import org.usfirst.frc.team2648.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class IntakeRun extends Command {
+public class IntakeTime extends Command {
 
-	private double speed;
+private double time;
 	
-    public IntakeRun(double i) {
+    public IntakeTime(double i) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);  
+        // eg. requires(chassis);
     	requires(Robot.intake);
-    	speed=i;
+    	time=i;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(time);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.runIntake(speed);
+    	Robot.intake.runIntake(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
@@ -43,4 +40,5 @@ public class IntakeRun extends Command {
     protected void interrupted() {
     	Robot.intake.runIntake(0);
     }
+
 }
