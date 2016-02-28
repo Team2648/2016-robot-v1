@@ -60,7 +60,10 @@ public class RobotMap {
 	public static SpeedController winch1;
 	public static SpeedController winch2;
 	
-	//PID Default Contants
+	//Wheely Bar
+	//public static DoubleSolenoid wb;
+	
+	//PID Default Constants
 	public static final double defaultP = .7;
 	public static final double defaultI = 0;
 	public static final double defaultD = 0;
@@ -97,5 +100,8 @@ public class RobotMap {
 		hang2 = new DoubleSolenoid(6,7);
 		winch1 = new Victor(5);
 		winch2 = new Victor(6);
+		
+		//Wheely Bar
+		//wb = new DoubleSolenoid(8,9);
 	}
 }

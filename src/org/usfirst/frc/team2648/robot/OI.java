@@ -56,6 +56,9 @@ public class OI {
 	public JoystickButton shooterIn;
 	public JoystickButton inShoot;
 	
+	public JoystickButton wbUp;
+	public JoystickButton wbDown;
+	
 	/*public JoystickButton hangDeploy;
 	public JoystickButton hangUp;
 	public JoystickButton hang;*/
@@ -69,9 +72,12 @@ public class OI {
 		intakeUp = new JoystickButton(j2,3);
 		intakeDown = new JoystickButton(j2,2);
 		
-		shooterOut = new JoystickButton(j2,2);
-		shooterIn = new JoystickButton(j2,3);
+		shooterOut = new JoystickButton(j2,7);
+		shooterIn = new JoystickButton(j2,8);
 		inShoot = new JoystickButton(j2,1);
+		
+		wbUp = new JoystickButton(j1, 6);
+		wbDown = new JoystickButton(j1,5);
 		/*hangDeploy = new JoystickButton(j2,6);
 		hangUp = new JoystickButton(j2,7);
 		hang = new JoystickButton(j2,8);*/

@@ -14,6 +14,7 @@ public class Pneu extends Subsystem {
 	DoubleSolenoid intake2 = RobotMap.intake2;
 	DoubleSolenoid hang1 = RobotMap.hang1;
 	DoubleSolenoid hang2 = RobotMap.hang2;
+	//DoubleSolenoid wb = RobotMap.wb;
 	Compressor comp = RobotMap.comp;
     
     // Put methods for controlling this subsystem
@@ -47,6 +48,14 @@ public class Pneu extends Subsystem {
     	hang1.set(DoubleSolenoid.Value.kReverse);
     	hang2.set(DoubleSolenoid.Value.kReverse);
     }
+    
+    /*public void wbUp(){
+    	wb.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void wbDown(){
+    	wb.set(DoubleSolenoid.Value.kReverse);
+    }*/
     
 }
 
