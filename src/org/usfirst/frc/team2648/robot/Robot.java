@@ -1,9 +1,11 @@
 
 package org.usfirst.frc.team2648.robot;
 
+import org.usfirst.frc.team2648.robot.commands.Auto;
 import org.usfirst.frc.team2648.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2648.robot.subsystems.Hanger;
 import org.usfirst.frc.team2648.robot.subsystems.Intake;
+import org.usfirst.frc.team2648.robot.subsystems.Light;
 import org.usfirst.frc.team2648.robot.subsystems.Pneu;
 import org.usfirst.frc.team2648.robot.subsystems.Shooter;
 
@@ -30,6 +32,9 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static Pneu pneu;
 	public static Hanger hanger;
+	public static Light light;
+	
+	Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -44,9 +49,11 @@ public class Robot extends IterativeRobot {
     	shooter = new Shooter();
     	pneu = new Pneu();
     	hanger = new Hanger();
+    	light = new Light();
     	
     	oi = new OI();
-		
+    	
+    	autonomousCommand = new Auto();
     }
 	
 	/**
@@ -60,6 +67,10 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Drive Encoder: ", driveTrain.encDist());
+        SmartDashboard.putNumber("Drive Gyro: ", driveTrain.gyAngle());
+        SmartDashboard.putBoolean("Light Sensor: ", intake.ball.get());
+        SmartDashboard.putNumber("Count: ", pneu.count);
 	}
 
 	/**
@@ -85,6 +96,8 @@ public class Robot extends IterativeRobot {
 		} */
     	
     	// schedule the autonomous command (example)
+    	System.out.println(autonomousCommand);
+    	if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
@@ -92,12 +105,14 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+
     }
 
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command,
+    	if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     /**
@@ -105,6 +120,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Drive Encoder: ", driveTrain.encDist());
+        SmartDashboard.putNumber("Drive Gyro: ", driveTrain.gyAngle());
+        SmartDashboard.putBoolean("Light Sensor: ", intake.ball.get());
     }
     
     /**

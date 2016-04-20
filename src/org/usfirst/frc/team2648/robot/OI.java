@@ -5,8 +5,12 @@ import org.usfirst.frc.team2648.robot.commands.HangerDeploy;
 import org.usfirst.frc.team2648.robot.commands.HangerLift;
 import org.usfirst.frc.team2648.robot.commands.InShoot;
 import org.usfirst.frc.team2648.robot.commands.IntakeDown;
+import org.usfirst.frc.team2648.robot.commands.IntakeDownUp;
 import org.usfirst.frc.team2648.robot.commands.IntakeRun;
+import org.usfirst.frc.team2648.robot.commands.IntakeToBall;
 import org.usfirst.frc.team2648.robot.commands.IntakeUp;
+import org.usfirst.frc.team2648.robot.commands.LightOff;
+import org.usfirst.frc.team2648.robot.commands.LightOn;
 import org.usfirst.frc.team2648.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -47,17 +51,23 @@ public class OI {
 	public Joystick j1;
 	public Joystick j2;
 	
+	//public JoystickButton intakeUpDown;
 	public JoystickButton intakeIn;
 	public JoystickButton intakeOut;
 	public JoystickButton intakeUp;
 	public JoystickButton intakeDown;
+	public JoystickButton intakeBall;
+	public JoystickButton outBall;
 	
 	public JoystickButton shooterOut;
 	public JoystickButton shooterIn;
-	public JoystickButton inShoot;
+	//public JoystickButton inShoot;
 	
-	public JoystickButton wbUp;
-	public JoystickButton wbDown;
+	public JoystickButton lightOn;
+	public JoystickButton lightOff;
+	
+	//public JoystickButton wbUp;
+	//public JoystickButton wbDown;
 	
 	/*public JoystickButton hangDeploy;
 	public JoystickButton hangUp;
@@ -67,30 +77,46 @@ public class OI {
 		j1 = new Joystick(0);
 		j2 = new Joystick(1);
 		
+		//intakeUpDown = new JoystickButton(j2,9);
 		intakeIn = new JoystickButton(j2,5);
 		intakeOut = new JoystickButton(j2,6);
 		intakeUp = new JoystickButton(j2,3);
 		intakeDown = new JoystickButton(j2,2);
+		intakeBall = new JoystickButton(j1,6);
+		outBall = new JoystickButton(j1,5);
 		
-		shooterOut = new JoystickButton(j2,7);
-		shooterIn = new JoystickButton(j2,8);
-		inShoot = new JoystickButton(j2,1);
+		//intakeUp = new JoystickButton(j2,j2.getPOV(0));
+		//intakeDown = new JoystickButton(j2, j2.getPOV(180));
 		
-		wbUp = new JoystickButton(j1, 6);
-		wbDown = new JoystickButton(j1,5);
+		
+		shooterOut = new JoystickButton(j2,4);
+		shooterIn = new JoystickButton(j2,1);
+		//inShoot = new JoystickButton(j2,1);
+		
+		lightOn = new JoystickButton(j1,1);
+		lightOff = new JoystickButton(j1,4);
+		
+		//wbUp = new JoystickButton(j1, 6);
+		//wbDown = new JoystickButton(j1,5);
 		/*hangDeploy = new JoystickButton(j2,6);
 		hangUp = new JoystickButton(j2,7);
 		hang = new JoystickButton(j2,8);*/
 		
 		
+		//intakeUpDown.whenPressed(new IntakeDownUp());
 		intakeIn.whileHeld(new IntakeRun(-1));
 		intakeOut.whileHeld(new IntakeRun(1));
 		intakeUp.whenPressed(new IntakeUp());
 		intakeDown.whenPressed(new IntakeDown());
+		intakeBall.whenPressed(new IntakeToBall());
 		
 		shooterOut.whileHeld(new Shoot(1));
 		shooterIn.whileHeld(new Shoot(-1));
-		inShoot.whenPressed(new InShoot(.75,1));
+		//inShoot.whenPressed(new InShoot(.75,1));
+		
+		lightOn.whenPressed(new LightOn());
+		lightOff.whenPressed(new LightOff());
+		
 		/*hangDeploy.whenPressed(new HangerDeploy());
 		hangUp.whenPressed(new HangerLift(1));
 		hang.whenPressed(new Hang());*/

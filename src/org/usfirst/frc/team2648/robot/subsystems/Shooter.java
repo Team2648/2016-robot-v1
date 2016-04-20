@@ -16,6 +16,7 @@ public class Shooter extends Subsystem {
     SpeedController shooter = RobotMap.shooterLeft;
     SpeedController shooter2 = RobotMap.shooterRight;
     DigitalInput ball = RobotMap.ball;
+    SpeedController lightM = RobotMap.lightM;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -29,12 +30,15 @@ public class Shooter extends Subsystem {
     public void setShoot(double shoot){
     	shooter.set(shoot);
     	shooter2.set(shoot);
-    	SmartDashboard.putNumber("Shooter: ", shooter.get());
+    	if(shoot < 0){
+    		lightM.set(1);
+    	}
     }
     
     public void stop(){
     	shooter.set(0);
     	shooter2.set(0);
+    	lightM.set(0);
     }
 }
 

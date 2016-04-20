@@ -40,7 +40,7 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void initDefaultCommand() {
-    	setDefaultCommand(new TankDrive());
+    	setDefaultCommand(new ArcadeDrive());
     }
     
     public double returnPIDInput() {
@@ -53,7 +53,7 @@ public class DriveTrain extends PIDSubsystem {
     
     public void arcadeDrive(){
     	if(!this.getPIDController().isEnabled()){
-    		rd.arcadeDrive(-Robot.oi.j1.getRawAxis(1),Robot.oi.j1.getRawAxis(0));	
+    		rd.arcadeDrive(-Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(0));	
     	}
     }
     
@@ -64,17 +64,21 @@ public class DriveTrain extends PIDSubsystem {
     			rd.tankDrive( -Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(3));
     		}
     		else{*/
-    			rd.tankDrive(-Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(3));
+    			rd.tankDrive(-Robot.oi.j1.getRawAxis(1),-Robot.oi.j1.getRawAxis(5));
     		
     	}
     }
     
     public void drive(double l, double r){
-    	rd.setLeftRightMotorOutputs(l, r);
+    	//rd.setLeftRightMotorOutputs(l, r);
+    	System.out.println("l " + l + ", r: " + r);
+    	left.set(l);
+    	right.set(r);
     }
     
     public void stop(){
     	rd.stopMotor();
+
     }
     
     public double encRate(){

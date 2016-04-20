@@ -12,8 +12,8 @@ public class Hanger extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	SpeedController winch1 = RobotMap.winch1;
-	SpeedController winch2 = RobotMap.winch2;
+	//SpeedController winch1 = RobotMap.winch1;
+	//SpeedController winch2 = RobotMap.winch2;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -21,8 +21,8 @@ public class Hanger extends Subsystem {
     }
     
     public void hangSet(double lift){
-    	winch1.set(lift);
-    	winch2.set(lift);
+    	//winch1.set(lift);
+    	//winch2.set(lift);
     }
 }
 

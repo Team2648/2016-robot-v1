@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -35,6 +36,9 @@ public class RobotMap {
 	
 	public static Compressor comp; 
 	
+	public static Relay light;
+	public static SpeedController lightM;
+	
 	//Drive Train
 	public static SpeedController left;
 	public static SpeedController right;
@@ -57,8 +61,8 @@ public class RobotMap {
 	//Hanger
 	public static DoubleSolenoid hang1;
 	public static DoubleSolenoid hang2;
-	public static SpeedController winch1;
-	public static SpeedController winch2;
+	//public static SpeedController winch1;
+	//public static SpeedController winch2;
 	
 	//Wheely Bar
 	//public static DoubleSolenoid wb;
@@ -77,6 +81,10 @@ public class RobotMap {
 	public static void init(){
 		comp = new Compressor();
 		
+		light = new Relay(0);
+		
+		lightM = new Talon(5);
+		
 		//Drive Train
 		left = new Victor(0);
 		right = new Victor(1);
@@ -93,13 +101,13 @@ public class RobotMap {
 		//Shooter
 		shooterRight = new Talon(3);
 		shooterLeft = new Talon(4);
-		ball = new DigitalInput(0);
+		ball = new DigitalInput(3);
 		
 		//Hanger
 		hang1 = new DoubleSolenoid(4,5);
 		hang2 = new DoubleSolenoid(6,7);
-		winch1 = new Victor(5);
-		winch2 = new Victor(6);
+		//winch1 = new Victor(5);
+		//winch2 = new Victor(6);
 		
 		//Wheely Bar
 		//wb = new DoubleSolenoid(8,9);

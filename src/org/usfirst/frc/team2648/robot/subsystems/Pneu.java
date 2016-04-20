@@ -5,6 +5,7 @@ import org.usfirst.frc.team2648.robot.RobotMap;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Pneu extends Subsystem {
 	DoubleSolenoid hang2 = RobotMap.hang2;
 	//DoubleSolenoid wb = RobotMap.wb;
 	Compressor comp = RobotMap.comp;
+	public int count = 0;
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -37,6 +39,18 @@ public class Pneu extends Subsystem {
     public void intakeDown(){
     	intake1.set(DoubleSolenoid.Value.kReverse);
     	intake2.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void intakeUpDown(){
+    	if(count%2 == 0){
+    		intake1.set(DoubleSolenoid.Value.kForward);
+        	intake2.set(DoubleSolenoid.Value.kForward);
+    	}
+    	else{
+    		intake1.set(DoubleSolenoid.Value.kReverse);
+        	intake2.set(DoubleSolenoid.Value.kReverse);
+    	}
+    	count++;
     }
     
     public void hangerOpen(){
